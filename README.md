@@ -28,7 +28,11 @@ Once you obtain OAuth access token, you should set it up
 
 ```rails
     Bookafy.access_token = '6911d4a6b217bd637db0c81741482cdb497738cd52c1b3996528094c1e47c345'
+    Bookafy.client_token = '756d6e029d10c5ac68e5d4cd4b8e3468e80ffed7d27a772d22430f75a5f08236'
 ```
+
+Access token is a oauth access token.
+Client token is a yours application code that you received after authorization.
 
 #### Customers
 
