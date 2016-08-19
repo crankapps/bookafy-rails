@@ -3,6 +3,7 @@ module Bookafy
   class BaseServiceTest < ActiveSupport::TestCase
 
     setup do
+      Bookafy.client_token = '12345678'
       Bookafy.access_token = '12345678'
     end
 
@@ -15,10 +16,10 @@ module Bookafy
     end
 
     test 'should return unauthorized access if token is not passed' do
-      Bookafy.access_token = ''
+      Bookafy.client_token = ''
       service = Bookafy::BaseService.new
 
-      stub_request(:get, "#{service.bookafy_api_url}customers").with(query: {token: '', page: 1}).
+      stub_request(:get, "#{service.bookafy_api_url}customers").with(query: {token: '', page: 1}, headers: {'Authorization' => "Bearer #{Bookafy.access_token}"}).
           to_return(status: 401, body: '', headers: {})
 
       response = service.get('customers')
@@ -29,7 +30,7 @@ module Bookafy
     test 'should get list of customers' do
       service = Bookafy::BaseService.new
 
-      stub_request(:get, "#{service.bookafy_api_url}customers").with(query: {token: service.access_token, page: 1}).
+      stub_request(:get, "#{service.bookafy_api_url}customers").with(query: {token: Bookafy.client_token, page: 1}, headers: {'Authorization' => "Bearer #{Bookafy.access_token}"}).
           to_return(status: 200, body: '{"response":{"message":"Success","remaining":0,"customers":[{"id":365,"created_at":"2015-10-08T12:41:56.036+05:00","updated_at":"2015-10-08T12:42:47.348+05:00","name":"Akmal","email":"akmal@clustox.com","customer_detail_hstore":{"city":"lahore","name":"Akmal","email":"akmal@clustox.com","state":"punjab","mobile":"03238784647","address":"johar town","zip code":"54000"},"notes":null,"image":{"url":null,"thumb":{"url":null},"small_thumb":{"url":null}},"soft_delete":false}]}}', headers: {})
 
       response = service.get('customers', {})

@@ -9,7 +9,7 @@ module Bookafy
     def initialize
       url = Bookafy.base_url || 'http://bookafydev.com'
       @domain = "#{url}/api/#{API_VERSION}/"
-      @token = Bookafy.access_token
+      @client_token = Bookafy.client_token
     end
 
     def bookafy_api_url
@@ -17,13 +17,13 @@ module Bookafy
     end
 
     def access_token
-      @token
+      @client_token
     end
 
     def get(url, options={})
-      default_options = {token: @token, page: 1}.merge(options)
+      default_options = {token: @client_token, page: 1}.merge(options)
       api_url = "#{@domain}#{url}"
-      response = HTTParty.get(api_url, {query: default_options})
+      response = HTTParty.get(api_url, {query: default_options, headers: {'Authorization' => "Bearer #{Bookafy.access_token}"}})
       response
     end
 

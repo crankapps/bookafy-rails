@@ -10,10 +10,12 @@ module Bookafy
 
   @base_url = 'http://bookafydev.com'
   @access_token = ''
+  @client_token = ''
 
   class << self
     attr_accessor :base_url
     attr_accessor :access_token
+    attr_accessor :client_token
   end
 
 end
