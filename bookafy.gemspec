@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'bookafy/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "bookafy-rails"
+  spec.name          = "bookafy"
   spec.version       = Bookafy::VERSION
   spec.authors       = ["Ivan Bajalovic"]
   spec.email         = ["bajalovic@gmail.com"]
