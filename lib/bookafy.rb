@@ -1,4 +1,10 @@
 require "bookafy/version"
+require "bookafy/base_service"
+require "bookafy/model/timestamps"
+require "bookafy/model/customer"
+require "bookafy/model/appointment"
+require "bookafy/customer"
+require "bookafy/appointment"
 
 module Bookafy
 

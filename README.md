@@ -1,15 +1,17 @@
 # Bookafy::Rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bookafy/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a gem that enables you to get customer and appointment data from [Bookafy](http://www.bookafy.com/).
 
-TODO: Delete this and the text above, and describe your gem
+Bookafy is an automated scheduling for service appointments, calls, meetings, and much more.
+
+[![Gem Version](https://badge.fury.io/rb/bookafy.svg)](https://badge.fury.io/rb/bookafy)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bookafy-rails'
+gem 'bookafy'
 ```
 
 And then execute:
@@ -18,17 +20,40 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install bookafy-rails
+    $ gem install bookafy
 
 ## Usage
 
-TODO: Write usage instructions here
+Once you obtain OAuth access token, you should set it up
 
-## Development
+```rails
+    Bookafy.access_token = '6911d4a6b217bd637db0c81741482cdb497738cd52c1b3996528094c1e47c345'
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+#### Customers
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To fetch all customers you can use:
+
+```rails
+    customer_service = Bookafy::Customer.new
+    customers = customer_service.all # an array of Customer models
+    
+    # or if you want to get only customers that have been updated since some time
+    customers = customer_service.all(updated: 7.days.ago.to_i)
+```
+
+#### Appointments
+
+To fetch all appointments you can use:
+
+```rails
+    appointments_service = Bookafy::Appointment.new
+    appointments = appointments_service.all # an array of Appointment models
+    
+    # or if you want to get only customers that have been updated since some time
+    appointments = appointments_service.all(updated: 7.days.ago.to_i)
+```
+
 
 ## Contributing
 
