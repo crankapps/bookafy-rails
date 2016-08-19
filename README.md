@@ -1,4 +1,4 @@
-# Bookafy::Rails
+# Bookafy
 
 This is a gem that enables you to get customer and appointment data from [Bookafy](http://www.bookafy.com/).
 
