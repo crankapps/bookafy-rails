@@ -3,7 +3,7 @@ module Bookafy
     class Appointment
       include Timestamps
 
-      attr_accessor :id, :client_id, :customer_id, :created_at, :updated_at, :appointment_start_time, :appointment_end_time, :all_day, :title, :description, :price, :duration, :recurring, :is_active, :is_blocker, :all_day_blocker, :soft_delete
+      attr_accessor :id, :client_id, :customer_id, :created_at, :updated_at, :appointment_start_time, :appointment_end_time, :all_day, :title, :description, :price, :duration, :recurring, :is_active, :is_blocker, :all_day_blocker, :soft_delete, :service, :category
 
       def initialize(attrs = {})
         attrs.each do |attr, val|
