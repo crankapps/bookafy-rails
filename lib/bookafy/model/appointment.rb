@@ -30,6 +30,22 @@ module Bookafy
         recurring
       end
 
+      def service_id
+        service['service_id'] unless service.blank?
+      end
+
+      def service_name
+        service['service_name'] unless service.blank?
+      end
+
+      def category_id
+        category['category_id'] unless category.blank?
+      end
+
+      def category_name
+        category['category_name'] unless category.blank?
+      end
+
       def all_day_blocker?
         all_day_blocker
       end
