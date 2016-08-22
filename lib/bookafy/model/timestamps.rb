@@ -8,7 +8,7 @@ module Bookafy
         def attributes
           attrs = {
               created_at: @created_at,
-              updated_at: @udpated_at
+              updated_at: @updated_at
           }
           if @appointment_start_time
             attrs[:appointment_start_time] = @appointment_start_time
