@@ -3,8 +3,10 @@ require "bookafy/base_service"
 require "bookafy/model/timestamps"
 require "bookafy/model/customer"
 require "bookafy/model/appointment"
+require "bookafy/model/company"
 require "bookafy/customer"
 require "bookafy/appointment"
+require "bookafy/company"
 
 module Bookafy
 

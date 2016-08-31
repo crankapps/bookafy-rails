@@ -1,9 +1,11 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'bookafy'
 require 'bookafy/base_service'
+require 'bookafy/company'
 require 'bookafy/customer'
 require 'bookafy/appointment'
 require 'bookafy/model/timestamps'
+require 'bookafy/model/company'
 require 'bookafy/model/customer'
 require 'bookafy/model/appointment'
 
