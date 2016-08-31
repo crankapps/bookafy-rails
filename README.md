@@ -58,6 +58,17 @@ To fetch all appointments you can use:
     appointments = appointments_service.all(updated: 7.days.ago.to_i)
 ```
 
+#### Company Info
+
+To fetch company info that you are currently connected to:
+
+```rails
+    company_service = Bookafy::Company.new
+    company = company_service.info
+    
+    puts company.name # prints company name
+```
+
 
 ## Contributing
 
